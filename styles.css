@@ -33,7 +33,6 @@ main {
     flex: 2;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 5px #9EAFBD, inset 0 0 2px #9EAFBD;
     padding: 10px 30px;
 }
 
@@ -101,8 +100,6 @@ footer {
 
 .sidePadding {
     flex: 1;
-    background-image: url('./assets/images/bg.jpg');
-    opacity: .5;
 }
 
 @media only screen and (max-width: 400px) {
