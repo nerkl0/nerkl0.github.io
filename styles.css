@@ -1,0 +1,112 @@
+:root {
+    --text-color: #EEF0FB;
+}
+@font-face {
+    font-family: 'LightBearer';
+    src: url('./assets/fonts/LightBearer.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'ASAP';
+    src: url('./assets/fonts/Asap-Regular.woff2') format('woff2');
+    font-weight: 'normal';
+}
+
+*{
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body { 
+    background-color: #232C33;
+    display: flex; 
+    flex-direction: row;
+    font-family: 'ASAP';
+    font-size: 30px; 
+    color: var(--text-color);
+}
+
+main { 
+    height: 100vh;
+    display: flex; 
+    flex-direction: column;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerContainer { 
+    display: flex; 
+    flex-direction: column;
+    flex: 3;
+    justify-content: center; 
+    text-align: center;
+    margin-top: 200px;
+}
+
+.header { 
+    font-family: 'LightBearer';    
+    font-size: 5rem;
+}
+
+.navContainer {
+    flex: 1; 
+    width: 100%;
+    margin-bottom: 200px;
+}
+
+.nav { 
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 5px;
+}
+
+button { 
+    background-color: #232C33;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 1px 5px #9EAFBD;  
+    padding: 30px 50px;
+    cursor: pointer;
+    transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+button:hover { 
+    background-color: #C8DBE4;
+    color: black;
+}
+
+.btnTxt { 
+    font-family: 'LightBearer';
+    font-size: 4rem;
+    color: var(--text-color);
+}
+
+footer { 
+    width: 100%; 
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.email{ 
+    font-size: 1rem;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.email p { 
+    margin: 6px 0px;
+    font-size: .7rem;
+}
+
+.sidePadding {
+    flex: 1;
+}
+
+@media only screen and (max-width: 400px) {
+    .nav {
+        flex-direction: column;
+    }
+    .sidePadding {
+        display: none;
+    }
+}
