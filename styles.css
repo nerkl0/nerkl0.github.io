@@ -1,9 +1,10 @@
 :root {
-    --text-color: #EEF0FB;
+    --text-color: #232C33;
+    --text-color-sub: #ffffff;
 }
 @font-face {
-    font-family: 'LightBearer';
-    src: url('./assets/fonts/LightBearer.woff2') format('woff2');
+    font-family: 'Pigment';
+    src: url('./assets/fonts/pigment.woff2') format('woff2');
 }
 @font-face {
     font-family: 'ASAP';
@@ -17,8 +18,46 @@
     padding: 0; 
 }
 
+.written-effect {
+    display: inline-block;
+    position: relative;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: write 5s steps(30) infinite, shake 0.2s ease-in-out 1 forwards;
+  }
+
+@keyframes write {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-3px);
+    }
+    50% {
+        transform: translateX(3px);
+    }
+    75% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 body { 
-    background-color: #232C33;
+    height: 100%;
+    background-color: #ffcba4;
+    overflow: hidden;
     display: flex; 
     flex-direction: row;
     font-family: 'ASAP';
@@ -30,10 +69,13 @@ main {
     height: 100vh;
     display: flex; 
     flex-direction: column;
-    flex: 2;
+    flex: 8;
     justify-content: center;
     align-items: center;
     padding: 10px 30px;
+}
+.container {
+    width: 100%; 
 }
 
 .headerContainer { 
@@ -45,8 +87,9 @@ main {
 }
 
 .header { 
-    font-family: 'LightBearer';    
-    font-size: 5rem;
+    font-family: 'Pigment';    
+    font-size: 6rem;
+    color: #232C33;
 }
 
 .navContainer {
@@ -77,9 +120,9 @@ button:hover {
 }
 
 .btnTxt { 
-    font-family: 'LightBearer';
+    font-family: 'Pigment';
     font-size: 4rem;
-    color: var(--text-color);
+    color: var(--text-color-sub);
 }
 
 footer { 
@@ -101,6 +144,10 @@ footer {
 .sidePadding {
     flex: 1;
 }
+
+
+
+
 
 @media only screen and (max-width: 400px) {
     .nav {
