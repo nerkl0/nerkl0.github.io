@@ -1,0 +1,181 @@
+@font-face {
+    font-family: 'Pigment';
+    src: url('../assets/fonts/pigment.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'ASAP';
+    src: url('../assets/fonts/Asap-Regular.woff2') format('woff2');
+    font-weight: 400;
+}
+
+:root {
+    --text-color: #232C33;
+    --text-color-sub: #ffffff;
+    --background: #ffcba4;
+    --foreground: #ffb990;
+    --title-font: 'Pigment';
+    --sub-font: 'ASAP';
+}
+
+*{
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+
+body { 
+    height: 100vh;
+    margin: 0;
+    background-color: var(--background);
+    overflow: hidden;
+
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+    font-family: var(--sub-font);
+    font-size: 30px; 
+    color: var(--text-color);
+}
+
+main { 
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.container {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: var(--foreground);
+    z-index: 0;
+}
+
+.headerContainer { 
+    display: flex; 
+    flex-direction: column;
+    flex: 2;
+    justify-content: center; 
+    text-align: center;
+}
+
+.header { 
+    font-family: var(--title-font);    
+    font-size: 6rem;
+    color: #232C33;
+}
+
+.written-effect {
+    display: inline-block;
+    position: relative;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: write 3s steps(30), shake 0.2s ease-in-out 1 forwards;
+}
+
+.navContainer {
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+}
+
+.button {
+    background: none;
+    border: 3px solid var(--text-color);
+    border-radius: 7px;
+    padding: 0.5rem 1.5rem;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--text-color);
+    color: var(--background);
+    box-shadow: 2px 2px var(--text-color-sub);
+}
+
+.btnTxt { 
+    font-family: var(--title-font);
+    font-size: 1.4rem;
+    color: var(--text-color-sub);
+    text-decoration: none;
+}
+
+
+footer { 
+    width: 100%; 
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.email{ 
+    font-size: 1rem;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.email p { 
+    margin: 6px 0px;
+    font-size: .7rem;
+}
+
+.sidePadding {
+    flex: 1;
+}
+
+
+
+
+@media only screen and (max-width: 400px) {
+    .nav {
+        flex-direction: column;
+    }
+
+    button { 
+        background-color: #7991A4;
+    }
+
+    .btnTxt { 
+        font-size: 2rem;
+        color: black;
+    }
+}
+
+
+@keyframes write {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-3px);
+    }
+    50% {
+        transform: translateX(3px);
+    }
+    75% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
