@@ -10,11 +10,18 @@ emailElement.addEventListener("click", () => {
     }, 3000);
 })
 
+function pageChange() { 
+
+}
+
 
 function handleCircleAnimation() { 
     const circles = document.querySelectorAll('.circle');
     circles.forEach((circle, index) => { 
         setTimeout(() => { 
+
+            // visibility property is added to help hide the animation 
+            // jumping between load / zoomIn / orbit transition 
             circle.style.visibility = 'visible';
             let list = circle.classList;
             list.add('zoomIn');
