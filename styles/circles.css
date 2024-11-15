@@ -1,0 +1,74 @@
+.circle {
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0.7;
+    animation: zoomIn 1s ease-in-out forwards;
+    animation: orbit 60s linear infinite;
+    transform-origin: center;
+}
+
+.front {
+    background-color: var(--foreground);
+    z-index: 0;
+}
+
+.back {
+    background-color: var(--background);
+    z-index: -1;
+}
+
+.big {
+    width: 300px;
+    height: 300px;
+}
+
+.small {
+    width: 150px;
+    height: 150px;
+}
+
+.circle.back.big:nth-child(1) { top: 12%; left: 4%; }
+.circle.back.big:nth-child(2) { top: 98%; left: 84%; animation: large-orbit 80s linear infinite;}
+.circle.back.big:nth-child(3) { top: 78%; left: 0%; }
+.circle.back.big:nth-child(4) { top: 38%; left: 86%; animation: large-orbit 80s linear infinite;}
+.circle.back.big:nth-child(5) { top: 86%; left: 96%; }
+
+.circle.back.small:nth-child(7) { top: 12%; left: 24%; }
+.circle.back.small:nth-child(8) { top: 18%; left: 44%; }
+.circle.back.small:nth-child(9) { top: 78%; left: 5%; animation: large-orbit 80s linear infinite;}
+.circle.back.small:nth-child(10) { top: 78%; left: 56%; }
+.circle.back.small:nth-child(11) { top: 38%; left: 86%; animation: large-orbit 80s linear infinite;}
+.circle.back.small:nth-child(12) { top: 86%; left: 96%; }
+
+.circle.front.big:nth-child(14) { top: 15%; left: 10%; }
+.circle.front.big:nth-child(15) { top: 85%; left: 80%; animation: large-orbit 80s linear infinite;}
+.circle.front.big:nth-child(16) { top: 65%; left: 5%; }
+.circle.front.big:nth-child(17) { top: 45%; left: 90%; animation: large-orbit 80s linear infinite;}
+
+.circle.front.small:nth-child(19) { top: 25%; left: 30%; animation: large-orbit 80s linear infinite;}
+.circle.front.small:nth-child(20) { top: 75%; left: 70%; animation: large-orbit 80s linear infinite;}
+.circle.front.small:nth-child(21) { top: 35%; left: 15%; }
+.circle.front.small:nth-child(22) { top: 85%; left: 40%; }
+
+@keyframes zoomIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+@keyframes orbit {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(100px) translateY(200px);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(100px) translateY(200px);
+    }
+}
+
+@keyframes large-orbit {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(700px) translateY(50px);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(700px) translateY(50px);
+    }
+}
