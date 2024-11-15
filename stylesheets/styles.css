@@ -25,7 +25,6 @@
     padding: 0; 
 }
 
-
 body { 
     height: 100vh;
     margin: 0;
@@ -66,8 +65,8 @@ main {
 .headerContainer { 
     display: flex; 
     flex-direction: column;
-    justify-content: flex-start; 
     text-align: center;
+
     margin-top: 10vh;
     z-index: 1; 
 }
@@ -75,15 +74,17 @@ main {
 .header { 
     font-family: var(--title-font);    
     font-size: 6rem;
+ 
+    text-align: center;
 }
 
 .written-effect {
     display: inline-block;
     position: relative;
-    color: var(--title-color);
+    color: var(--title-color); 
     white-space: nowrap;
     overflow: hidden;
-    animation: write 3s steps(30), shake 0.2s ease-in-out 1 forwards;
+    animation: write 3s steps(30);
 }
 
 .navContainer {
@@ -115,7 +116,6 @@ main {
     color: var(--text-color-sub);
 }
 
-
 footer { 
     width: 100%; 
     display: flex; 
@@ -139,19 +139,35 @@ footer {
 
 
 
+/* About page */
+
+
+
+
+
+
 @media only screen and (max-width: 400px) {
-    .nav {
+    html, body {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        position: relative;
+    }
+
+
+    .written-effect { 
+        max-width: 100%; 
+        text-wrap: balance;
+    }
+
+    .mobNav {
+        display: flex; 
         flex-direction: column;
     }
 
-    button { 
-        background-color: #7991A4;
+    .button { 
+        margin-bottom: 10px;
     }
-
-    .btnTxt { 
-        font-size: 2rem;
-        color: black;
-    }
+    
 }
 
 
@@ -161,23 +177,5 @@ footer {
     }
     100% {
         width: 100%;
-    }
-}
-
-@keyframes shake {
-    0% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-3px);
-    }
-    50% {
-        transform: translateX(3px);
-    }
-    75% {
-        transform: translateX(-2px);
-    }
-    100% {
-        transform: translateX(0);
     }
 }
