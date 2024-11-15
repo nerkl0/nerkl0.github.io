@@ -2,7 +2,7 @@
     border-radius: 50%;
     position: absolute;
     opacity: 0.7;
-    visibility: 'hidden';
+    visibility: hidden;
 }
 
 .zoomIn { 
