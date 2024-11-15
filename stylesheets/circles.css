@@ -74,12 +74,3 @@
         transform: translate(-50%, -50%) rotate(360deg) translateX(100px) translateY(200px);
     }
 }
-
-@keyframes large-orbit {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg) translateX(700px) translateY(50px);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg) translateX(700px) translateY(50px);
-    }
-}
