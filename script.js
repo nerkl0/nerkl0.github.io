@@ -1,17 +1,40 @@
 
-const emailElement = document.getElementById('copyEmail');
-const originalValue =  emailElement.textContent; 
+document.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => handleCircleAnimation());
 
-emailElement.addEventListener("click", () => {
-    navigator.clipboard.writeText(emailElement.dataset.clipboardText);
-    emailElement.innerHTML = 'email copied to clipboard';
+    document.getElementById('portfolioBtn')?.addEventListener('click', () => {
+        pageChange('./pages/portfolio.html');
+    });
+    
+    document.getElementById('homeBtn')?.addEventListener('click', () => { 
+        pageChange('../index.html');
+    });
+    
+    document.getElementById('aboutBtn')?.addEventListener('click', () => { 
+        pageChange('./pages/about.html');
+    });
+});
+
+function pageChange(targetPage) { 
+    pageOutTransitionAnimation('slide');
     setTimeout(() => {
-        emailElement.textContent = originalValue;
-    }, 3000);
-})
+        window.location.assign(targetPage);
+    }, 2000); 
+}
 
-function pageChange() { 
+function pageOutTransitionAnimation(animation) {
+    const elements = document.querySelectorAll('main *:not(.circle)');
+    elements.forEach((e, index) => {
+        setTimeout(() => { 
+            e.classList.add(animation);
+        }, index * 100);
+    });
+}
 
+
+function pageInTransition(animation) {
+    const element = document.querySelectAll('body');
+    element.classList.add(animation);
 }
 
 
@@ -19,10 +42,6 @@ function handleCircleAnimation() {
     const circles = document.querySelectorAll('.circle');
     circles.forEach((circle, index) => { 
         setTimeout(() => { 
-
-            // visibility property is added to help hide the animation 
-            // jumping between load / zoomIn / orbit transition 
-            circle.style.visibility = 'visible';
             let list = circle.classList;
             list.add('zoomIn');
 
@@ -33,5 +52,3 @@ function handleCircleAnimation() {
         }, index * 100);
     })
 }
-
-window.addEventListener('load', () => handleCircleAnimation() );

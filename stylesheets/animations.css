@@ -1,0 +1,45 @@
+@keyframes write {
+    0% { width: 0; } 
+    100% { width: 100%; }
+}
+
+@keyframes slide {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+}
+
+.written-effect {
+    display: inline-block;
+    position: relative;
+    color: var(--title-color); 
+    white-space: nowrap;
+    overflow: hidden;
+    animation: write 3s steps(30);
+}
+
+.slide {
+    animation: slide 3s forwards;
+}
+
+.zoom { 
+    animation: zoom 2s forwards; 
+    transform-origin: center;
+}
+
+@keyframes slide {
+    0% { opacity: 1;  transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-100%); }
+}
+
+@keyframes zoom { 
+    0% { 
+        opacity: 0; 
+        transform: scale(0); 
+        transform-origin: center;
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1);
+        transform-origin: center;
+    }
+}
