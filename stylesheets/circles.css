@@ -1,8 +1,8 @@
 .circle {
     border-radius: 50%;
-    position: absolute;
     opacity: 0.7;
-    visibility: 'hidden';
+    position: absolute;
+    z-index: 1;
 }
 
 .zoomIn { 
@@ -15,12 +15,11 @@
 
 .front {
     background-color: var(--foreground);
-    z-index: 0;
+
 }
 
 .back {
     background-color: var(--background);
-    z-index: -1;
 }
 
 .big {
