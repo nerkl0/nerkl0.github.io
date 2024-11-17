@@ -12,7 +12,7 @@
     display: inline-block;
     position: relative;
     color: var(--title-color); 
-    white-space: nowrap;
+    white-space: nowrap; 
     overflow: hidden;
     animation: write 3s steps(30);
 }
@@ -41,5 +41,13 @@
         opacity: 1; 
         transform: scale(1);
         transform-origin: center;
+    }
+}
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+
+    .written-effect { 
+        width: 100%;
+        white-space: normal;
+        text-wrap: stable;
     }
 }

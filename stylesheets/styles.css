@@ -32,6 +32,10 @@ html {
     z-index: -4;
 }
 
+a {
+    text-decoration: none;
+}
+
 body { 
     height: 100vh;
     margin: 0;
@@ -127,21 +131,84 @@ body {
     color: var(--text-color-sub);
 }
 
+.button:disabled { 
+    border: none;
+    background-color: grey;
+    color: silver;
+    cursor: no-drop;
+}
+
+.button:disabled::after {
+    content: "Coming Soon";
+    position: absolute;
+    bottom: -20px;
+    left: 30%;
+    transform: translateX(-50%);
+    font-family: var(--sub-font);
+    background-color: var(--button-color);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.button:disabled:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
 footer { 
     width: 100%; 
     display: flex; 
     justify-content: flex-end;
+}
+
+
+.contact { 
+    display: flex; 
+    flex-direction: column;
+    row-gap: 0.5rem;
+    align-items: center;
+    padding: 20px; 
+
     position: relative;
     z-index: 3;
 }
 
-.email{ 
-    color: var(--title-color);
-    font-size: 1rem;
-    margin-right: 20px;
-    text-decoration: none;
-    cursor: pointer;
+.contact p { 
+    opacity: .8;
 }
+
+.links {
+    display: flex;
+    align-items: center;
+    column-gap: 0.9rem;
+}
+
+.contact p {
+    color: var(--title-color);
+    font-size: 1.2rem;
+}
+
+.mailto img, 
+.linkedin img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.mailto img:hover,
+.linkedin img:hover {
+    transform: scale(1.1);
+}
+
+
+/*  Portfolio  */
 
 .left-container {
     display: flex;
@@ -177,12 +244,6 @@ footer {
         overflow-x: hidden;
         overflow-y: hidden;
         position: relative;
-    }
-
-
-    .written-effect { 
-        max-width: 100%; 
-        text-wrap: balance;
     }
 
     .mob-nav {
