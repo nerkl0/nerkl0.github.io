@@ -3,57 +3,56 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="stylesheets/circles.css">
-        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="./stylesheets/circles.css">
+        <link rel="stylesheet" href="./stylesheets/styles.css">
+        <link rel="stylesheet" href="./stylesheets/animations.css">
         <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
-        <title>Nicole Birch | Portfolio</title>
+        <title>Nicole Birch</title>
     </head>
-    <body>
-        <main class="container">
-            <div class="circle back big"></div>
-            <div class="circle back big"></div>
-            <div class="circle back big"></div>
-            <div class="circle back big"></div>
-            <div class="circle back big"></div>
-            <div class="circle back small"></div>
-            <div class="circle back small"></div>
-            <div class="circle back small"></div>
-            <div class="circle back small"></div>
-            <div class="circle back small"></div>
-            <div class="circle back small"></div>
-            
-            <div class="circle front big"></div>
-            <div class="circle front big"></div>
-            <div class="circle front big"></div>
-            <div class="circle front big"></div>
-            <div class="circle front small"></div>
-            <div class="circle front small"></div>
-            <div class="circle front small"></div>
-            <div class="circle front small"></div>
-
-
-            <header class="headerContainer">
-                <h1 class="header written-effect">Nicole Birch</h1>
-                <h5>Junior Developer</h5>
-            </header>
-            <nav class="navContainer">
-                <div class="mobNav">
-                    <a href="./pages/projects.html" class="button">Projects</a>
-                    <a href="./pages/about.html" class="button">About Me</a>
-                </div>
-            </nav>
-            
-            <footer class="findMe">
-                <div class="email"><p>(click to copy)</p>
-                    <div id="copyEmail"  data-clipboard-text="nicolebirchh@gmail.com">nicolebirchh@gmail.com</div>
-                </div>
-                <a href="https://www.linkedin.com/in/nicole-birch-750a3428b/">
-                    <img src= './assets/images/linkedIn.png'
-                        alt="LinkedIn logo">
-                </a>
-            </footer>
-        </main>
-        <script src="script.js"></script>
+    <body id="index" >
+        <div class="container">   
+            <main class="main">
+                <div class="circle back big"></div>
+                <div class="circle back big"></div>
+                <div class="circle back big"></div>
+                <div class="circle back big"></div>
+                <div class="circle back big"></div>
+                <div class="circle back small"></div>
+                <div class="circle back small"></div>
+                <div class="circle back small"></div>
+                <div class="circle back small"></div>
+                <div class="circle back small"></div>
+                <div class="circle back small"></div>
+                
+                <div class="circle front big"></div>
+                <div class="circle front big"></div>
+                <div class="circle front big"></div>
+                <div class="circle front big"></div>
+                <div class="circle front small"></div>
+                <div class="circle front small"></div>
+                <div class="circle front small"></div>
+                <div class="circle front small"></div>  
+                <header class="header-container">
+                    <h1 id="slide-elements" class="header written-effect">Nicole Birch</h1>
+                    <h5 id="slide-elements">Software Developer</h5>
+                </header>
+                <nav class="nav-container">
+                    <div class="mob-nav">
+                        <button id="portfolioBtn" class="button">Portfolio</button>
+                        <button id="aboutBtn" class="button" disabled>About Me</button>
+                    </div>
+                </nav>
+                
+                <footer class="findMe">
+                    <a id="slide-elements" class="email" href="mailto:nicolebirchh@gmail.com">Get in contact</a>
+                    <a href="https://www.linkedin.com/in/nicole-birch-750a3428b/">
+                        <img id="slide-elements" src= '../assets/images/linkedIn.png'
+                            alt="LinkedIn logo">
+                    </a>
+                </footer>
+            </main>
+        </div>
+        <script defer src="../script.js"></script>
     </body>
 </html>
 
