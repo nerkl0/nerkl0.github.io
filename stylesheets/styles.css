@@ -63,6 +63,17 @@ body {
     height: 100%;   
     position: relative;
     z-index: -1;
+    opacity: 0;
+    transform: scale(0.8);
+    visibility: hidden;
+    transition: opacity 0.5s ease-in, transform 0.5s ease-in, visibility 0s 0.5s;
+}
+
+.loaded {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0s 0.5s;
 }
 
 .main { 
@@ -91,10 +102,18 @@ body {
     z-index: 3;
 }
 
+
+.mob-view { 
+    display: none;
+}
+
 .header { 
     font-family: var(--title-font);    
     font-size: 6rem;
-    text-align: center;
+    text-align: left;
+}
+.large-screen { 
+    text-align: left;
 }
 
 .nav-container {
@@ -131,14 +150,21 @@ body {
     color: var(--text-color-sub);
 }
 
-.button:disabled { 
+.button:disabled{ 
     border: none;
     background-color: grey;
     color: silver;
     cursor: no-drop;
 }
 
-.button:disabled::after {
+.menu:disabled { 
+    border: none;
+    color: silver;
+    cursor: no-drop;
+}
+
+.button:disabled::after,
+.menu:disabled::after {
     content: "Coming Soon";
     position: absolute;
     bottom: -20px;
@@ -155,7 +181,8 @@ body {
     transition: opacity 0.3s ease-in-out;
 }
 
-.button:disabled:hover::after {
+.button:disabled:hover::after,
+.menu:disabled:hover::after {
     visibility: visible;
     opacity: 1;
 }
@@ -170,7 +197,7 @@ footer {
 .contact { 
     display: flex; 
     flex-direction: column;
-    row-gap: 0.5rem;
+    row-gap: 0.2rem;
     align-items: center;
     padding: 20px; 
 
@@ -185,17 +212,17 @@ footer {
 .links {
     display: flex;
     align-items: center;
-    column-gap: 0.9rem;
+    column-gap: 0.3rem;
 }
 
 .contact p {
     color: var(--title-color);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .mailto img, 
 .linkedin img {
-    height: 40px;
+    height: 50px;
     width: auto;
     object-fit: contain;
     cursor: pointer;
@@ -211,31 +238,78 @@ footer {
 /*  Portfolio  */
 
 .left-container {
+    height: 80vh;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border: 1px solid #000;
 }
 
 .menu { 
+    background: none;
     border: none; 
+    padding: 10px;
+
+    color: var(--button-color);
+    font-family: var(--title-font);
+    font-size: 2rem;
+
+    cursor: pointer;  
+    margin-right: 20px;
+    transition: color 0.2s ease-in-out;
 }
 
+.menu:hover { 
+    color: var(--title-color);
+    font-style: italic;
+}
 
 .right-container { 
-    flex: 1; 
+    flex: 6; 
     padding: 20px;
 }
 
-.goodfat {
-    width: 40%; 
-    border-radius: 8px; 
-    background-color: #f6e6ff;
-    transition: transform 0.5s ease-in-out;
+.collection { 
+    width: 95%;
+    height: 95%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start;
 }
 
-.goodfat:hover { 
+.goodfat-container {
+    display: flex;
+    width: 35%;
+    max-height: 30%; 
+    padding: 10px;
+    border-radius: 8px; 
+    background-color: #f6e6ff;
+    font-size: 0;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+.goodfat-container:hover { 
     transform: scale(1.05);
+}
+
+.goodfat-container a { 
+    flex: 2; 
+    margin-right: 10px;
+}
+.goodfat-container img { 
+    max-height: 100%;
+    max-width: 100%; 
+    object-fit: contain; 
+}
+.goodfat-container p { 
+    flex: 3;
+    align-self: end;
+    font-size: 0.8rem;
+    color: #112A46;
+    margin: 0 5px 10px 0;
+}
+.goodfat-container span { 
+    margin: 0 5px; 
 }
 
 
@@ -245,14 +319,53 @@ footer {
         overflow-y: hidden;
         position: relative;
     }
-
+    .header-container { 
+        flex: 0; 
+        margin-top: 10vh;
+        padding: 0 10px;
+    }
+    .container {
+        flex-direction: column;
+    }
+    .large-screen { 
+        display: none;
+    }
+    .mob-view { 
+        display: block;
+        text-align: left;
+    }
     .mob-nav {
         display: flex; 
         flex-direction: column;
     }
+    .lastname { 
+        padding: 0 20px; 
+    }
 
     .button { 
         margin-bottom: 10px;
+    }
+    
+
+    /* Portfolio */
+    .left-container { 
+        flex: 0; 
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+    .menu { 
+        font-family: var(--title-font);
+        justify-content: space-between;
+    }
+    .right-container { 
+        flex: 6; 
+    }
+    .goodfat-container p { 
+        display: none; 
+    }
+    .goodfat-container {
+        width: 100%; 
     }
     
 }
