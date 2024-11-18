@@ -19,17 +19,17 @@ function pageChange(targetPage) {
     pageOutTransitionAnimation('slide');
     setTimeout(() => {
         window.location.assign(targetPage);
-    }, 2000); 
+    }, 1600); 
 }
 
 function pageOutTransitionAnimation(animation) {
-    const elements = document.querySelectorAll('main *:not(.circle)');
+    const elements = document.querySelectorAll('.container *:not(.circle)');
     elements.forEach((e, index) => {
         setTimeout(() => { 
             e.classList.add(animation);
         }, index * 100);
     });
-}
+};
 
 
 function pageInTransition(animation) {
@@ -52,3 +52,14 @@ function handleCircleAnimation() {
         }, index * 100);
     })
 }
+
+window.onload = () => {
+    const container = document.querySelector('.container');
+    const children = container.children;
+    Array.from(children).forEach((child, index) =>{
+        setTimeout(() => { 
+            child.classList.add('loaded', 'zoom');
+        }, index * 100)
+    });
+    container.classList.add('loaded', 'zoom');
+};
