@@ -6,17 +6,19 @@ Welcome to my portfolio website! 🎉 This is a showcase of my skills, projects 
 
 ## 🚀 Features So Far
 - **Portfolio Section**: Browse through a selection of my projects that highlight my expertise in:
-  - **C#**
-  - **Node.js**
   - **React**
-  -  **React Native**
-  - **JavaScript**
-  - **SQL** and **NoSQL**
+  - **JavaScript / Typescript**
+  - **Wrangler**
 - Smooth navigation for a great user experience.
 
 ## 🔧 Coming Soon
 - **About Section**: Learn more about me, my background, and my passion for software development.
 - More enhancements to the site's design and functionality.
+- More projects showcasing
+  - **C#**
+  - **Node.js**
+  - **React Native**
+  - **SQL** and **NoSQL**
 
 ## 👩‍💻 Technologies Used
 This portfolio is built using HTML, CSS and Javascript to showcase both my technical and creative skills and understanding the basics.
