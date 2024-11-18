@@ -4,8 +4,25 @@
 }
 
 @keyframes slide {
-    from { transform: translateY(0); }
-    to { transform: translateY(-100%); }
+    0% { opacity: 1;  transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-100%); }
+}
+
+@keyframes zoom { 
+    0% { 
+        opacity: 0; 
+        transform: scale(0.5); 
+        transform-origin: center;
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1);
+        transform-origin: center;
+    }
+}
+
+.container .zoom {
+    animation: zoom 2s forwards;
 }
 
 .written-effect {
@@ -26,28 +43,11 @@
     transform-origin: center;
 }
 
-@keyframes slide {
-    0% { opacity: 1;  transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-100%); }
-}
 
-@keyframes zoom { 
-    0% { 
-        opacity: 0; 
-        transform: scale(0); 
-        transform-origin: center;
-    }
-    100% { 
-        opacity: 1; 
-        transform: scale(1);
-        transform-origin: center;
-    }
-}
 @media only screen and (max-width: 480px) and (orientation: portrait) {
-
     .written-effect { 
-        width: 100%;
         white-space: normal;
-        text-wrap: stable;
+        max-width: 100%;
+        overflow: hidden; 
     }
 }
