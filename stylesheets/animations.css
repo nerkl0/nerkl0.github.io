@@ -21,6 +21,20 @@
     }
 }
 
+
+@keyframes zoom-reverse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        transform-origin: center;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.2);
+        transform-origin: center;
+    }
+}
+
 .container .zoom {
     animation: zoom 2s forwards;
 }
@@ -40,9 +54,11 @@
 
 .zoom { 
     animation: zoom 2s forwards; 
-    transform-origin: center;
 }
 
+.zoom-reverse { 
+    animation: zoom-reverse 2s forwards; 
+}
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
     .written-effect { 

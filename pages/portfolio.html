@@ -17,14 +17,35 @@
         </section>
         <main class="main right-container">
             <section class="collection">
-                <div class="goodfat-container"> 
-                    <a href="https://goodfatpastry.au" target="_blank" rel="noopener noreferrer">
-                        <img src="../assets/images/baker_0.webp" alt="Good Fat Pastry Logo" />
+                <div class="project goodfat"> 
+                    <a href="https://goodfatpastry.au" 
+                        target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="../assets/images/baker_0.webp" alt="Good Fat Pastry Logo" />
                     </a>
                     <p><span>React </span>&#8226;<span> Javascript / Typescript </span>&#8226;<span> Wrangler </span></p>
                 </div>
+                <div class="project">
+                    <div class="beanscene">
+                        <a onclick='showModal(true)'>
+                            <img
+                                src="../assets/images/BeanSceneLogo.webp" alt="Bean Scene Logo" />
+                        </a>
+                    </div>
+                </div>
             </section>
         </main> 
+    </div>
+    <div id="modal">
+        <div class="modal-contents">
+            <div class="demo">
+                <video id="beansceneDemo" controls muted>
+                    <source src="../assets/media/BeanSceneDemo.mp4" 
+                        type="video/mp4" />
+                </video>
+                <button class="close-btn" onclick='showModal(false)'>x</div>
+            </div>
+        </div>
     </div>
     <script defer src="../script.js"></script>
 </body>
