@@ -220,8 +220,7 @@ footer {
     font-size: 1.1rem;
 }
 
-.mailto img, 
-.linkedin img {
+.link-image img {
     height: 50px;
     width: auto;
     object-fit: contain;
@@ -229,8 +228,7 @@ footer {
     transition: transform 0.2s ease-in-out;
 }
 
-.mailto img:hover,
-.linkedin img:hover {
+.link-image img:hover {
     transform: scale(1.1);
 }
 
@@ -273,44 +271,101 @@ footer {
     width: 95%;
     height: 95%;
     display: flex; 
-    flex-direction: column; 
+    justify-content: space-around;
     align-items: flex-start;
 }
 
-.goodfat-container {
+.project {
     display: flex;
     width: 35%;
     max-height: 30%; 
     padding: 10px;
     border-radius: 8px; 
-    background-color: #f6e6ff;
-    font-size: 0;
     cursor: pointer;
     transition: transform 0.5s ease-in-out;
 }
-.goodfat-container:hover { 
+.project:hover { 
     transform: scale(1.05);
 }
 
-.goodfat-container a { 
+.project a { 
     flex: 2; 
     margin-right: 10px;
 }
-.goodfat-container img { 
+.project img { 
     max-height: 100%;
     max-width: 100%; 
     object-fit: contain; 
 }
-.goodfat-container p { 
+.project p { 
     flex: 3;
     align-self: end;
     font-size: 0.8rem;
     color: #112A46;
     margin: 0 5px 10px 0;
 }
-.goodfat-container span { 
+.project span { 
     margin: 0 5px; 
 }
+
+.goodfat { 
+    background-color: #f6e6ff;
+}
+
+#modal { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    z-index: 9999;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    visibility: hidden;
+
+}
+.modal-contents { 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 90%;
+    width: 80%;
+    border-radius: 6px;
+}
+.demo { 
+    display: flex; 
+    align-items: flex-start;
+    height: 100%;
+    width: auto;
+    animation: none;
+}
+
+.demo video{
+    object-fit: contain; 
+    max-height: 100%;
+    width: auto;
+}
+
+.close-btn {
+    background: none;
+    border: none; 
+    color: var(--button-color);
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow:
+        -1px -1px 0 var(--text-color-sub),  
+        1px -1px 0 var(--text-color-sub),
+        -1px 1px 0 var(--text-color-sub),
+        1px 1px 0 var(--text-color-sub);
+    margin-left: 10px;
+    transition: all 0.2s ease-in;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+  
 
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
