@@ -1,18 +1,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    requestAnimationFrame(() => handleCircleAnimation());
-
-    document.getElementById('portfolioBtn')?.addEventListener('click', () => {
-        pageChange('./pages/portfolio.html');
-    });
-    
-    document.getElementById('homeBtn')?.addEventListener('click', () => { 
-        pageChange('../index.html');
-    });
-    
-    document.getElementById('aboutBtn')?.addEventListener('click', () => { 
-        pageChange('./pages/about.html');
-    });
+    document.querySelector('.nav-buttons')?.addEventListener('click', (event) => { 
+        const target = event.target;
+        if (target.matches('button[data-content]')) {
+            const contentId = target.dataset.content; 
+            console.log(contentId)
+            contentChange(contentId);
+        }
+    })
     
     const demoElement = document.querySelector('.demo');
     if (demoElement) {
@@ -22,46 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function pageChange(targetPage) { 
-    pageOutTransitionAnimation('slide');
+function contentChange(contentId) { 
+    contentOutTransitionAnimation('slide');
     setTimeout(() => {
-        window.location.assign(targetPage);
-        pageInTransition('zoom');
-    }, 1600); 
+        const changeToContent = document.getElementById(contentId);
+        pageInTransition('zoom', changeToContent);
+    }, 2000); 
 }
 
-function pageOutTransitionAnimation(animation) {
-    const elements = document.querySelectorAll('.container *:not(.circle)');
+function contentOutTransitionAnimation(animationClass) {
+    const elements = document.querySelectorAll('.main *:not(.circle)');
+
     elements.forEach((e, index) => {
         setTimeout(() => { 
-            e.classList.add(animation);
+            e.classList.add(animationClass);
         }, index * 100);
     });
 };
 
 
-function pageInTransition(animation) {
-    const element = document.querySelectorAll('body');
-    element.classList.add(animation);
-    element.style.visibility = 'visible'
+function pageInTransition(animationClass, content) {
+    content.classList.add(animationClass);
+    content.style.visibility = 'visible';
+    content.style.zIndex = 1;
+
+    content.addEventListener('animationend', () => {
+        content.classList.remove(animationClass);
+    });
 }
-
-
-function handleCircleAnimation() { 
-    const circles = document.querySelectorAll('.circle');
-    circles.forEach((circle, index) => { 
-        setTimeout(() => { 
-            let list = circle.classList;
-            list.add('zoom');
-
-            circle.addEventListener('animationend', () => { 
-                list.remove('zoom')
-                list.add('orbit');
-            })
-        }, index * 100);
-    })
-}
-
 function handleAnimation(chosenElement, effect, effect2 = undefined) { 
     const element = document.querySelectorAll(chosenElement);
     element.forEach((e, index) => { 
@@ -100,17 +83,6 @@ function showModal(show) {
         demoVideo.currentTime = 0
     } 
 }
-
-window.onload = () => {
-    const container = document.querySelector('.container');
-    const children = container.children;
-    Array.from(children).forEach((child, index) =>{
-        setTimeout(() => { 
-            child.classList.add('loaded', 'zoom');
-        }, index * 100)
-    });
-    container.classList.add('loaded', 'zoom');
-};
 
 
 window.addEventListener('click', function(event) {

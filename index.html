@@ -5,66 +5,91 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../stylesheets/circles.css">
         <link rel="stylesheet" href="../stylesheets/styles.css">
-        <link rel="stylesheet" href="../stylesheets/animations.css">
         <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
-        <title>Nicole Birch</title>
+        <title>Nicole Birch | Portfolio</title>
     </head>
-    <body id="index">
-        <div class="container">   
-            <main class="main">
-                <div class="circle back big"></div>
-                <div class="circle back big"></div>
-                <div class="circle back big"></div>
-                <div class="circle back big"></div>
-                <div class="circle back big"></div>
-                <div class="circle back small"></div>
-                <div class="circle back small"></div>
-                <div class="circle back small"></div>
-                <div class="circle back small"></div>
-                <div class="circle back small"></div>
-                <div class="circle back small"></div>
+    <body>
+        <div class="container">
+            <div class="circle light big orbit"></div>
+            <div class="circle light big orbit"></div>
+            <div class="circle light big orbit"></div>
+            <div class="circle light big orbit"></div>
+            <div class="circle light big orbit"></div>
+
+            <div class="circle light small orbit"></div>
+            <div class="circle light small orbit"></div>
+            <div class="circle light small orbit"></div>
+            <div class="circle light small orbit"></div>
+            <div class="circle light small orbit"></div>
+            <div class="circle light small orbit"></div>
+
+            <div class="circle dark big orbit"></div>
+            <div class="circle dark big orbit"></div>
+            <div class="circle dark big orbit"></div>
+            <div class="circle dark big orbit"></div>
+            
+            <div class="circle dark small orbit"></div>
+            <div class="circle dark small orbit"></div>
+            <div class="circle dark small orbit"></div>
+            <div class="circle dark small orbit"></div>
                 
-                <div class="circle front big"></div>
-                <div class="circle front big"></div>
-                <div class="circle front big"></div>
-                <div class="circle front big"></div>
-                <div class="circle front small"></div>
-                <div class="circle front small"></div>
-                <div class="circle front small"></div>
-                <div class="circle front small"></div>  
-                <header class="header-container">
-                    <div class="large-screen">
-                        <h1 class="header written-effect">Nicole Birch</h1>
-                    </div>
-                    <div class="mob-view"> 
-                        <h1 class="header written-effect">Nicole</h1>
-                    </div>
-                    <div class="mob-view"> 
-                        <h1 class="header written-effect lastname">Birch</h1>
-                    </div>
-                    <h5>Software Developer</h5>
-                </header>
-                <nav class="nav-container">
-                    <div class="mob-nav">
-                        <button id="portfolioBtn" class="button">Portfolio</button>
-                        <button id="aboutBtn" class="button" disabled>About Me</button>
-                    </div>
-                </nav>
+            <main>
+                <div id="index">
+                    <header class="header-container">
+                        <div class="large-screen">
+                            <h1 class="header written-effect">Nicole Birch</h1>
+                        </div>
+                        <div class="mob-view"> 
+                            <h1 class="header written-effect">Nicole</h1>
+                        </div>
+                        <div class="mob-view"> 
+                            <h1 class="header written-effect lastname">Birch</h1>
+                        </div>
+                        <h5 class="zoom-in">Software Developer</h5>
+                    </header>
+                
+                    <nav class="nav-buttons">
+                        <button data-content="portfolio" class="button zoom-in">Portfolio</button>
+                        <button data-content="about" class="button zoom-in" disabled>About Me</button>
+                    </nav>
+                </div>
+                
+
+                <div id="portfolio" class="main right-container">
+                    <section class="collection">
+                        <div class="project goodfat"> 
+                            <a href="https://goodfatpastry.au" 
+                                target="_blank" rel="noopener noreferrer">
+                                <img
+                                    src="../assets/images/baker_0.webp" alt="Good Fat Pastry Logo" />
+                            </a>
+                            <p><span>React </span>&#8226;<span> Javascript / Typescript </span>&#8226;<span> Wrangler </span></p>
+                        </div>
+                        <div class="project">
+                            <div class="beanscene">
+                                <a onclick='showModal(true)'>
+                                    <img
+                                        src="./assets/images/BeanSceneLogo.webp" alt="Bean Scene Logo" />
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
                 
                 <footer>
                     <div class="contact"> 
                         <div class="links">
-                            <a class="link-image" href="https://github.com/nerkl0" 
+                            <a class="link-image zoom-in" href="https://github.com/nerkl0" 
                                 target="_blank" rel="noopener noreferrer">
                                 <img 
                                     src="./assets/images/github.webp" alt="Github logo">
                             </a> 
-                            <a class="link-image" href="mailto:nicolebirchh@gmail.com" 
+                            <a class="link-image zoom-in" href="mailto:nicolebirchh@gmail.com" 
                                 target="_blank" rel="noopener noreferrer">
                                 <img 
                                     src="./assets/images/envelope.webp" alt="Picture of an envelope">
                             </a> 
-                            <a class="link-image" href="https://www.linkedin.com/in/nicole-birch-750a3428b/"  
+                            <a class="link-image zoom-in" href="https://www.linkedin.com/in/nicole-birch-750a3428b/"  
                                 target="_blank" rel="noopener noreferrer">
                                 <img 
                                     src= './assets/images/linkedin.webp' alt="LinkedIn logo">
@@ -72,7 +97,18 @@
                         </div>
                     </div>
                 </footer>
-            </main>
+            </div>
+        </main>
+        <div id="modal">
+            <div class="modal-contents">
+                <div class="demo">
+                    <video id="beansceneDemo" controls muted>
+                        <source src="./assets/media/BeanSceneDemo.webm" 
+                            type="video/webm" />
+                    </video>
+                    <button class="close-btn" onclick='showModal(false)'>x</div>
+                </div>
+            </div>
         </div>
         <script defer src="./script.js"></script>
     </body>
