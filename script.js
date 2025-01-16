@@ -64,6 +64,12 @@ function handleAnimation(chosenElement, effect, effect2 = undefined) {
 }
 
 
+function closeModal(modalName) {
+    const modal = document.getElementById(modalName);
+    modal.classList.remove('visible-content');
+    modal.classList.add('hidden-content');
+}
+
 function showModal(show) {
     const modal = document.getElementById('modal');
     const demo = document.querySelector('.demo');
