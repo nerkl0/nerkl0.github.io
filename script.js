@@ -1,75 +1,82 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.nav-buttons')?.addEventListener('click', (event) => { 
-        const target = event.target;
-        if (target.matches('button[data-content]')) {
-            const contentId = target.dataset.content; 
-            console.log(contentId)
-            contentChange(contentId);
-        }
-    })
-    
-    const demoElement = document.querySelector('.demo');
-    if (demoElement) {
-        demoElement.addEventListener('animationend', (event) => {
-            event.target.style.animation = 'none';
+    document.querySelectorAll('.nav-buttons')?.forEach(navBtn => {
+        navBtn.addEventListener('click', (event) => { 
+            const target = event.target;
+            if (target.matches('button[data-content]')) {
+                const targetElements = target.dataset.content; 
+                switchElements(targetElements);
+            }
         });
-    }
+    });
 });
 
-function contentChange(contentId) { 
-    contentOutTransitionAnimation('slide');
-    setTimeout(() => {
-        const changeToContent = document.getElementById(contentId);
-        pageInTransition('zoom', changeToContent);
-    }, 2000); 
+let children = [];
+let pages = ['home', 'about', 'portfolio'];
+
+async function onInitialLoad() {
+    const home = document.getElementById('home');
+    children = [];
+    getAllChildren(home);
+    await delayedAnimationEffect(children, 'visible', 150);
 }
 
-function contentOutTransitionAnimation(animationClass) {
-    const elements = document.querySelectorAll('.main *:not(.circle)');
+function getAllChildren(parent) {
+    const p = parent.children;
+    if (p.length === 0) 
+        return children.push(p);
 
-    elements.forEach((e, index) => {
-        setTimeout(() => { 
-            e.classList.add(animationClass);
-        }, index * 100);
-    });
-};
-
-
-function pageInTransition(animationClass, content) {
-    content.classList.add(animationClass);
-    content.style.visibility = 'visible';
-    content.style.zIndex = 1;
-
-    content.addEventListener('animationend', () => {
-        content.classList.remove(animationClass);
-    });
+    for (let i = 0; i < p.length; i++) {
+        p[i].children.length > 0 ? getAllChildren(p[i]) : children.push(p[i])
+    }
+    console.log(children)
 }
-function handleAnimation(chosenElement, effect, effect2 = undefined) { 
-    const element = document.querySelectorAll(chosenElement);
-    element.forEach((e, index) => { 
-        setTimeout(() => { 
-            let list = e.classList;
-            list.add(effect);
 
-            if(effect2 !== undefined) {
-                circle.addEventListener('animationend', () => { 
-                    list.remove(effect)
-                    list.add(effect2);
-                })
-            }
-            
-        }, index * 100);
+function delayedAnimationEffect(element, animation, delay) {
+    const len = element.length;
+
+    return new Promise(resolve => { 
+        for (let i = 0; i < len; i++) {
+            setTimeout(() => {
+                element[i].classList.add(animation);
+                if (i === len - 1)
+                    element[i].addEventListener('animationend', () => resolve());
+            }, (i + 1) * delay)
+        }
     })
 }
 
+async function switchElements(id) {
+    const visibleElements = document.querySelectorAll('.visible');
+    if (visibleElements) {
+        await delayedAnimationEffect(visibleElements, 'hidden', 150);
+        for (let i = 0; i < visibleElements.length; i++) {
+            visibleElements[i].classList.remove('visible');
+        } 
+    }
+
+    pages.forEach(p => {
+        const reset = document.getElementById(p);
+        if (reset)
+            p != id ? reset.classList.add('shrink') : reset.classList.remove('shrink');
+    })  
+
+    children = [];
+    getAllChildren(document.getElementById(id));
+    for (let i = 0; i < children.length; i++) {
+        children[i].classList.remove('hidden');
+    }
+
+    await delayedAnimationEffect(children, 'visible', 200);
+}
 
 function closeModal(modalName) {
     const modal = document.getElementById(modalName);
-    modal.classList.remove('visible-content');
-    modal.classList.add('hidden-content');
+    modal.style.display = "none";
 }
 
+
+/*
 function showModal(show) {
     const modal = document.getElementById('modal');
     const demo = document.querySelector('.demo');
@@ -89,11 +96,8 @@ function showModal(show) {
         demoVideo.currentTime = 0
     } 
 }
+*/
 
-
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('modal');
-    if (event.target === modal) {
-        showModal(false);
-    }
+window.addEventListener('load', () => {
+    onInitialLoad();
 });
