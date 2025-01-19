@@ -4,18 +4,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Nicole Birch Portfolio">
-        <link rel="stylesheet" href="../stylesheets/circles.css">
-        <link rel="stylesheet" href="../stylesheets/styles.css">
-        <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+        <link rel="stylesheet" href="./stylesheets/circles.css">
+        <link rel="stylesheet" href="./stylesheets/styles.css">
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
         <title>Nicole Birch | Portfolio</title>
-        <style>
-            .main-container section { 
-                visibility: hidden
-            }
-        </style>
+
     </head>
     <body>
         <div class="page-container">
+
+            <!-- Floating Cicles -->
             <div class="circle light big orbit"></div>
             <div class="circle light big orbit"></div>
             <div class="circle light big orbit"></div>
@@ -39,81 +37,76 @@
             <div class="circle dark small orbit"></div>
             <div class="circle dark small orbit"></div>
                 
+            <!-- Content -->
             <main class="main-container">
+
+                <!-- Home Section -->
                 <section id="home">
-                    <div class="top">
-                        <header class="header-container">
-                            <div class="large-screen">
-                                <h1 class="header written-effect">Nicole Birch</h1>
-                            </div>
-                            <div class="mob-view"> 
-                                <h1 class="header written-effect">Nicole</h1>
-                            </div>
-                            <div class="mob-view"> 
-                                <h1 class="header written-effect lastname">Birch</h1>
-                            </div>
-                            <h5 class="text">Software Developer</h5>
-                        </header>
-                    
-                        <nav class="nav-buttons">
-                            <button data-content="portfolio" class="button">Portfolio</button>
-                            <button data-content="about" class="button" disabled>About Me</button>
-                        </nav>
-                    </div>
-                    <footer>
+                    <header class="header-container">
+                        <div class="large-screen">
+                            <h1 id="name" class="header">Nicole Birch</h1>
+                        </div>
+                        <h5>Software Developer</h5>
+                    </header>
+                    <nav class="nav-buttons">
+                        <button data-content="portfolio">Portfolio</button>
+                    </nav>
+
+                    <footer class="footer">
                         <div class="contact">
                             <div class="links">
-                                <a class="link-image" href="https://github.com/nerkl0" target="_blank" rel="noopener noreferrer">
-                                    <img src="./assets/images/github.webp" alt="Github logo">
+                                <a class="hover"
+                                    href="https://github.com/nerkl0" target="_blank" rel="noopener noreferrer">
+                                    <img 
+                                        src="./assets/images/github.webp" alt="Github logo">
                                 </a>
-                                <a class="link-image" href="mailto:nicolebirchh@gmail.com" target="_blank"
+                                <a class="hover"
+                                    href="mailto:nicolebirchh@gmail.com" target="_blank"
                                     rel="noopener noreferrer">
-                                    <img src="./assets/images/envelope.webp" alt="Picture of an envelope">
+                                    <img 
+                                        src="./assets/images/envelope.webp" alt="Picture of an envelope">
                                 </a>
-                                <a class="link-image" href="https://www.linkedin.com/in/nicole-birch-750a3428b/" target="_blank"
+                                <a class="hover"
+                                    href="https://www.linkedin.com/in/nicole-birch-750a3428b/" target="_blank"
                                     rel="noopener noreferrer">
-                                    <img src='./assets/images/linkedin.webp' alt="LinkedIn logo">
+                                    <img 
+                                        src='./assets/images/linkedin.webp' alt="LinkedIn logo">
                                 </a>
                             </div>
                         </div>
                     </footer>
                 </section>
                 
+                <!-- Portfolio Section -->
                 <section id="portfolio">
-                    <nav class="nav-buttons">
-                        <button data-content="home" class="button">Home</button>
-                        <button data-content="about" class="button" disabled>About Me</button>
+                    <nav class="nav-buttons portfolio-nav">
+                        <button data-content="home">Home</button>
                     </nav>
                     <div class="collection">
-                        <div class="project goodfat"> 
-                            <a href="https://goodfatpastry.au" 
-                                target="_blank" rel="noopener noreferrer">
-                                <img
-                                    src="./assets/images/baker_0.webp" alt="Good Fat Pastry Logo" />
-                            </a>
-                            <p>React &#8226; Javascript &#8226; Typescript &#8226; Wrangler</p>
+                        <!-- Goodfat Project -->
+                        <div class="project goodfat hover" onclick='handleModal("goodfat-modal", true)'>
+                            <img 
+                                src="./assets/images/baker_0.webp" alt="Good Fat Pastry Logo">
                         </div>
-                        <div class="project">
-                            <div class="nimble-container">
-                                <a href="https://github.com/orgs/Gelos-Bean/repositories" 
-                                    target="_blank" rel="noopener noreferrer">
-                                    <img class="nimble-img"
-                                        src="./assets/images/NimbleMerchant.webp" alt="Nimble Merchant Logo" />
-                                </a>
-                            </div>
+                        <!-- Nimble Merchant Project -->
+                        <div class="project nimble hover">
+                            <img
+                                src="./assets/images/NimbleMerchant.webp" alt="Nimble Merchant Logo">
                         </div>
                     </div>
                 </section>
-                
             </main>
         </div>
-        <div id="modal">
+
+        <!-- Construction Modal -->
+        <div id="construction-modal" class="modal-wrapper">
+            <div class="modal-background" onclick='handleModal("construction-modal", false)'></div>
             <div class="modal-container">
-                <button class="close-btn" onclick='closeModal("modal")'>x</button>
+                <button class="close-btn" onclick='handleModal("construction-modal", false)'>x</button>
                 <div class="modal-contents">
                     <div class="modal-left">
                         <img 
-                            src="./assets/images/construct.gif" alt="Construction worker painting" />
+                            src="./assets/images/construct.gif" alt="Construction worker painting">
                     </div>
                     <div class="modal-right"><strong>Under Construction</strong>
                         <p>Feel free to browse what's currently here</p>
@@ -121,6 +114,62 @@
                 </div>
             </div>
         </div>
+
+        <!-- Good Fat Modal -->
+        <div id="goodfat-modal" class="modal-wrapper">
+            <div class="modal-background" onclick='handleModal("goodfat-modal", false)'></div>
+            <div class="modal-container goodfat-modal-properties">
+                <div class="modal-title">
+                    <img 
+                        src="./assets/images/GoodFatLogo.png" alt="Good Fat Pastry Logo">
+                    <button class="close-btn" onclick='handleModal("goodfat-modal", false)'>&#10006;</button>
+                </div>
+                <div class="modal-contents">
+                    <div>
+                        <img 
+                            src="./assets/images/baker_0.webp" alt="Good Fat Pastry icon">
+                    </div>
+                    <div>
+                        <p>Business website built for local Blue Mountains Bakery</p>
+                        <strong>
+                            <p>React &#8226; JavaScript &#8226; TypeScript &#8226; Wrangler</p>
+                        </strong>
+                        <a class="modal-button"
+                            href="https://goodfatpastry.au" target="_blank" rel="noopener noreferrer">
+                            Follow to Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nimble Modal -->
+        <div id="nimble-modal" class="modal-wrapper">
+            <div class="modal-background" onclick='handleModal("nimble-modal", false)'></div>
+            <div class="modal-container nimble-modal-properties">
+                <div class="modal-title">
+                    <img src="./assets/images/NimbleMerchant.webp" alt="Nimble Merchant Logo" />
+                    <button class="close-btn" onclick='handleModal("nimble-modal", false)'>&#10006;</button>
+                </div>
+                <div class="modal-contents">
+                    <div>
+                        <img src="" alt="" />
+                    </div>
+                    <div>
+                        <p>About about</p>
+                        <strong>
+                            <p>Languages</p>
+                        </strong>
+                        <button class="button modal-button">
+                            <a href="https://github.com/orgs/Gelos-Bean/repositories" target="_blank" rel="noopener noreferrer">
+                                GitHub Repo
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <script defer src="./script.js"></script>
     </body>
 </html>
