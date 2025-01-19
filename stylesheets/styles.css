@@ -11,7 +11,7 @@
 
 :root {
     --title-color: #333333;
-    --text-color: #1C1C1C;
+    --text-color: #2a2a2a;
     --text-color-sub: #E6E6E6;
     --button-color: #6A2C3C;
     --background: #ffcba4;
@@ -29,6 +29,10 @@
 a {
     text-decoration: none;
 }
+a:visited { 
+    color: inherit;
+}
+
 
 body { 
     height: 100vh;
@@ -41,6 +45,8 @@ body {
     background-color: var(--background);
     font-family: var(--sub-font);
     color: var(--text-color);
+    font-size: 30px;
+
     overflow: hidden;
     position: relative;
     z-index: -2;
@@ -61,23 +67,16 @@ body {
     height: 100%;
     width: 100%;
     padding: 10px 30px;
+    position: relative; 
+    z-index: 4;
 }
-
-.text { 
-    font-size: 30px; 
-}
-
 
 /* Home */
 #home {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.top { 
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .header-container {
@@ -87,12 +86,6 @@ body {
     align-items: center;
 
     margin-top: 100px;
-    position: relative;
-    z-index: 3;
-}
-
-.mob-view {
-    display: none;
 }
 
 .header {
@@ -105,13 +98,12 @@ body {
     text-align: left;
 }
 
-footer {
+.footer {
     width: 100%;
     flex: 4;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    border: 1px solid #000;
 }
 
 .contact {
@@ -125,43 +117,33 @@ footer {
     z-index: 3;
 }
 
-.contact p {
-    opacity: .8;
-}
-
 .links {
     display: flex;
     align-items: center;
     column-gap: 0.3rem;
 }
 
-.contact p {
-    color: var(--title-color);
-    font-size: 1.1rem;
-}
-
-.link-image img {
+.links a img { 
     height: 50px;
     width: auto;
     object-fit: contain;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    scale: 1;
+    transition: all 0.4s ease-in-out;
 }
 
-.link-image img:hover {
+.links a img:hover {
     transform: scale(1.1);
 }
 
+/*nav menu*/
 .nav-buttons {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-
-    position: relative;
-    z-index: 3;
 }
 
-.button {
+.nav-buttons button {
     background: none;
     border: 3px solid var(--text-color);
     border-radius: 7px;
@@ -176,148 +158,105 @@ footer {
 
     cursor: pointer;
     transition: all 0.3s ease;
-
-    position: relative;
-    z-index: 3;
 }
 
-.button:hover {
+.nav-buttons button:hover {
     background-color: var(--button-color);
     border-color: var(--button-color);
     box-shadow: 1px 1px 1px rgba(230, 230, 230, 0.5);
     color: var(--text-color-sub);
 }
 
-.button:disabled {
-    border: none;
-    background-color: grey;
-    color: silver;
-    cursor: no-drop;
-}
-
-.menu:disabled {
-    border: none;
-    color: silver;
-    cursor: no-drop;
-}
-
-.button:disabled::after,
-.menu:disabled::after {
-    content: "Coming Soon";
-    position: absolute;
-    bottom: -20px;
-    left: 30%;
-    transform: translateX(-50%);
-    font-family: var(--sub-font);
-    background-color: var(--button-color);
-    color: white;
-    padding: 5px;
-    border-radius: 4px;
-    font-size: 12px;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.button:disabled:hover::after,
-.menu:disabled:hover::after {
-    visibility: visible;
-    opacity: 1;
-}
-
-.visible {
-    visibility: visible !important;
-    height: 100%;
-
-    animation: zoom-in 3s forwards;
-}
-
-.hidden {
-    visibility: hidden;
-    z-index: -9999;
-    position: relative;
-    animation: slide-out 2s forwards;
-}
-
-.shrink { 
+#home.hidden,
+#portfolio.hidden { 
     height: 0%;
+    opacity: 0;
 }
 
-
-#portfolio { 
+/*  Portfolio  */
+#portfolio {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    z-index: 4;
+    height: 100%;
 }
 
-#about { 
-    visibility: hidden;
-    z-index: -9999;
+.portfolio-nav { 
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
 }
 
-
-/*  Portfolio  */
 .collection { 
     width: 95%;
     height: 95%;
     display: flex; 
     justify-content: space-around;
     align-items: flex-start;
+    padding: 20px;
 }
 
 .project {
     display: flex;
-    width: 35%;
-    max-height: 30%; 
+    height: 220px;
+    width: auto;
     padding: 10px;
     border-radius: 8px; 
     cursor: pointer;
-    transition: transform 0.5s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.06);    
 }
 
-.project:hover { 
-    transform: scale(1.05);
-}
-
-.project a { 
-    flex: 2; 
-    margin-right: 10px;
-}
 .project img { 
-    max-height: 100%;
-    max-width: 100%; 
-    object-fit: contain; 
-}
-.project p { 
-    flex: 3;
-    align-self: end;
-    font-size: 0.8rem;
-    color: #112A46;
-    margin: 0 5px 10px 0;
-}
-
-.nimble-img { 
+    width: 100%;
+    height: 100%;
+    flex: 2;
+    margin-right: 10px;
     border-radius: 10px;
+    object-fit: contain; 
+    transition: transform 0.4s ease-in-out;
+}
+.project img:hover {
+    transform: scale(1.1);
 }
 
 .goodfat { 
     background-color: #f6e6ff;
 }
 
-#modal {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+.nimble { 
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.hover {
+    transition: transform 0.4s ease-in-out !important;
+}
+
+.hover:hover {
+    transform: scale(1.1) !important;
+}
+
+
+/* Modal properties */
+.modal-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 9999;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+}
+
+.modal-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.159);
+    z-index: -1;
 }
 
 .modal-container {
@@ -325,107 +264,60 @@ footer {
     flex-direction: column;
     background-color: #fff;
     height: auto;
-    max-width: 600px;
+    max-width: 800px;
     width: 90%;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    position: relative;
+    padding: 40px 20px;
     transition: transform 0.3s ease-in-out;
 }
 
-.modal-container p {
-    font-size: 16px;
-    color: #333;
-    text-align: center;
-    margin: 20px 0;
+.modal-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.modal-title img {
+    width: 50%;
+    object-fit: contain;
+    margin: 0 auto;
 }
 
 .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ff6666;
-    color: #fff;
     border: none;
+    background-color: #FFD8A8;
+    color: #fff;
     border-radius: 30%;
     width: 30px;
     height: 30px;
     font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 .close-btn:hover {
-    background-color: #ffcccc;
-    cursor: pointer; 
+    background-color: #FFB377;
 }
 
 .modal-contents {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 20px;
-
+    justify-content: space-between;
+    line-height: 3;
+    font-size: 16px;
+    padding: 0px 25px
 }
-  
 
+.modal-button {
+    color: inherit;
+    border-color: inherit;
+}
 
-@media only screen and (max-width: 480px) and (orientation: portrait) {
-    html, body {
-        overflow-x: hidden;
-        overflow-y: hidden;
-        position: relative;
-    }
-    .header-container { 
-        flex: 0; 
-        margin-top: 10vh;
-        padding: 0 10px;
-    }
-    .container {
-        flex-direction: column;
-    }
-    .large-screen { 
-        display: none;
-    }
-    .mob-view { 
-        display: block;
-        text-align: left;
-    }
-    .nav-buttons {
-        display: flex; 
-        flex-direction: column;
-    }
-    .lastname { 
-        padding: 0 20px; 
-    }
-
-    .button { 
-        margin-bottom: 10px;
-    }
-    
-
-    /* Portfolio */
-    .left-container { 
-        flex: 0; 
-        flex-direction: row;
-        align-items: center;
-        padding-bottom: 10px;
-    }
-    .menu { 
-        font-family: var(--title-font);
-        justify-content: space-between;
-    }
-    .right-container { 
-        flex: 6; 
-    }
-    .goodfat-container p { 
-        display: none; 
-    }
-    .goodfat-container {
-        width: 100%; 
-    } 
+.goodfat-modal-properties {
+    background-color: "#f6e6ff";
+    color: #513063;
 }
 
 
@@ -435,63 +327,39 @@ footer {
     100% { width: 100%; }
 }
 
-@keyframes slide-out {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
-}
-
-@keyframes zoom-in { 
-    0% { 
-        opacity: 0;
-        transform: scale(0.5); 
-    }
-    100% { 
-        opacity: 1; 
-        transform: scale(1);
-    }
-}
-
-@keyframes zoom-out {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-        transform-origin: center;
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.2);
-        transform-origin: center;
-    }
-}
-
 .written-effect {
     display: inline-block;
     position: relative;
-    color: var(--title-color); 
-    white-space: nowrap; 
+    color: var(--title-color);
+    white-space: nowrap;
     overflow: hidden;
+    opacity: 1 !important;
     animation: write 3s steps(30);
 }
 
+
+@keyframes zoom-in {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes zoom-out {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.5); }
+}
+
+@keyframes slide-out {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-100%); }
+}
+
 .zoom-in { 
-    animation: zoom-in 1.5s forwards;
+    animation: zoom-in 2s forwards;
 }
 
 .slide-out {
-    animation: slide-out 2s forwards;
+    animation: slide-out 3s forwards;
 }
-
-.zoom-reverse { 
-    animation: zoom-reverse 2s forwards; 
-}
-
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
     .written-effect { 
