@@ -1,103 +1,113 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nav-buttons')?.forEach(navBtn => {
-        navBtn.addEventListener('click', (event) => { 
+        navBtn.addEventListener('click', (event) => {
             const target = event.target;
             if (target.matches('button[data-content]')) {
-                const targetElements = target.dataset.content; 
+                const targetElements = target.dataset.content;
                 switchElements(targetElements);
             }
         });
     });
 });
 
-let children = [];
-let pages = ['home', 'about', 'portfolio'];
+let pages = ['home', 'portfolio'];
 
-async function onInitialLoad() {
-    const home = document.getElementById('home');
-    children = [];
-    getAllChildren(home);
-    await delayedAnimationEffect(children, 'visible', 150);
-}
+function flattenDOMTree(parent) {
+    const elements = [];
 
-function getAllChildren(parent) {
-    const p = parent.children;
-    if (p.length === 0) 
-        return children.push(p);
-
-    for (let i = 0; i < p.length; i++) {
-        p[i].children.length > 0 ? getAllChildren(p[i]) : children.push(p[i])
+    function traverseTree(node) {
+        elements.push(node);
+        Array.from(node.children).forEach(child => traverseTree(child));
     }
-    console.log(children)
+
+    traverseTree(parent);
+    return elements.slice(1);
 }
 
-function delayedAnimationEffect(element, animation, delay) {
-    const len = element.length;
+function delayedAnimationEffect(elements, animation, delay) {
+    return new Promise((resolve) => {
+        let completedAnimations = 0;
 
-    return new Promise(resolve => { 
-        for (let i = 0; i < len; i++) {
+        elements.forEach((element, index) => {
             setTimeout(() => {
-                element[i].classList.add(animation);
-                if (i === len - 1)
-                    element[i].addEventListener('animationend', () => resolve());
-            }, (i + 1) * delay)
+                element.classList.add(animation);
+                element.addEventListener('animationend', () => {
+                    completedAnimations++;
+                    if (completedAnimations === elements.length) {
+                        resolve();
+                    }
+                });
+            }, index * delay);
+        });
+    });
+}
+
+async function switchElements(sectionId) {
+    const visibleElements = document.querySelectorAll('.zoom-in');
+    const headerElement = document.querySelector('.written-effect');
+
+    // reset visibility of all elements
+    if (visibleElements.length) {
+        const visibleArray = Array.from(visibleElements);
+        visibleArray.reverse();
+
+        if (headerElement) {
+            headerElement.classList.remove('written-effect');
+            headerElement.addEventListener('animationend', () => {
+                delayedAnimationEffect([headerElement], 'slide-out', 100);
+            });
         }
-    })
-}
 
-async function switchElements(id) {
-    const visibleElements = document.querySelectorAll('.visible');
-    if (visibleElements) {
-        await delayedAnimationEffect(visibleElements, 'hidden', 150);
-        for (let i = 0; i < visibleElements.length; i++) {
-            visibleElements[i].classList.remove('visible');
-        } 
+        await delayedAnimationEffect(visibleArray, 'slide-out', 100);
+        visibleArray.forEach(element => {
+            element.classList.remove('zoom-in');
+        });
     }
 
-    pages.forEach(p => {
-        const reset = document.getElementById(p);
-        if (reset)
-            p != id ? reset.classList.add('shrink') : reset.classList.remove('shrink');
-    })  
+    // hide sections to avoid interferance with visible section
+    document.querySelectorAll('section').forEach(section => {
+        section.id === sectionId ? section.classList.remove('hidden') : section.classList.add('hidden');
+    });
 
-    children = [];
-    getAllChildren(document.getElementById(id));
-    for (let i = 0; i < children.length; i++) {
-        children[i].classList.remove('hidden');
+    // animate incoming elements
+    const sectionNode = document.getElementById(sectionId);
+    const elementsToAnimate = flattenDOMTree(sectionNode);
+
+    sectionNode.classList.remove('slide-out');
+    elementsToAnimate.forEach(element => {
+        element.classList.remove('slide-out');
+        element.style.opacity = '0';
+    });
+
+    const h1Element = sectionNode.querySelector('h1');
+    if (h1Element) {
+        h1Element.classList.add('written-effect');
+        h1Element.addEventListener('animationend', () => {
+            h1Element.style.opacity= '1';
+            h1Element.classList.remove('written-effect');
+        });
     }
 
-    await delayedAnimationEffect(children, 'visible', 200);
-}
-
-function closeModal(modalName) {
-    const modal = document.getElementById(modalName);
-    modal.style.display = "none";
+    await delayedAnimationEffect(elementsToAnimate.filter(e => e !== h1Element), 'zoom-in', 150);
 }
 
 
-/*
-function showModal(show) {
-    const modal = document.getElementById('modal');
-    const demo = document.querySelector('.demo');
-    const demoVideo = document.getElementById('beansceneDemo');
+function handleModal(modalId, visible) {
+    const modal = document.getElementById(modalId);
+    const modalContent = modal.querySelector('.modal-container');
+    modalContent.style.animation = '';
 
-    if (show) {
-        demo.style.animation = 'zoom 2s forwards';
-        modal.style.visibility='visible';
-        demoVideo.play();
+    if (visible) {
+        modalContent.style.animation = 'zoom-in 1s forwards';
+        modal.style.visibility = 'visible';
+    } else { 
+        modalContent.style.animation = 'zoom-out 1s forwards';
+        setTimeout(() => { 
+            modal.style.visibility = 'hidden';
+        }, 900)
     }
-    else {
-        demo.style.animation = 'zoom-reverse 0.5s forwards';
-        demo.addEventListener('animationend', () => { 
-            modal.style.visibility='hidden';
-        })
-        demoVideo.pause();
-        demoVideo.currentTime = 0
-    } 
 }
-*/
 
 window.addEventListener('load', () => {
-    onInitialLoad();
-});
+    switchElements('home');
+})
