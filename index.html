@@ -98,23 +98,6 @@
             </main>
         </div>
 
-        <!-- Construction Modal -->
-        <div id="construction-modal" class="modal-wrapper">
-            <div class="modal-background" onclick='handleModal("construction-modal", false)'></div>
-            <div class="modal-container">
-                <button class="close-btn" onclick='handleModal("construction-modal", false)'>x</button>
-                <div class="modal-contents">
-                    <div class="modal-left">
-                        <img 
-                            src="./assets/images/construct.gif" alt="Construction worker painting">
-                    </div>
-                    <div class="modal-right"><strong>Under Construction</strong>
-                        <p>Feel free to browse what's currently here</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Good Fat Modal -->
         <div id="goodfat-modal" class="modal-wrapper">
             <div class="modal-background" onclick='handleModal("goodfat-modal", false)'></div>
@@ -130,14 +113,16 @@
                             src="./assets/images/baker_0.webp" alt="Good Fat Pastry icon">
                     </div>
                     <div>
+                        <div class="modal-button-wrapper">
+                            <a class="modal-button goodfat" 
+                                href="https://goodfatpastry.au" target="_blank" rel="noopener noreferrer">
+                                Follow to Website
+                            </a>
+                        </div>
                         <p>Business website built for local Blue Mountains Bakery</p>
                         <strong>
                             <p>React &#8226; JavaScript &#8226; TypeScript &#8226; Wrangler</p>
                         </strong>
-                        <a class="modal-button"
-                            href="https://goodfatpastry.au" target="_blank" rel="noopener noreferrer">
-                            Follow to Website
-                        </a>
                     </div>
                 </div>
             </div>
