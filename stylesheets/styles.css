@@ -18,6 +18,9 @@
     --foreground: #ffb990;
     --title-font: 'Pigment';
     --sub-font: 'ASAP';
+
+    --goodfat-text-colour: #513063;
+    --goodfat-bgcolour: #f6e6ff;
 }
 
 *{
@@ -33,6 +36,9 @@ a:visited {
     color: inherit;
 }
 
+html { 
+    overflow: hidden;
+}
 
 body { 
     height: 100vh;
@@ -129,7 +135,7 @@ body {
     object-fit: contain;
     cursor: pointer;
     scale: 1;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease;
 }
 
 .links a img:hover {
@@ -191,7 +197,6 @@ body {
     width: 95%;
     height: 95%;
     display: flex; 
-    justify-content: space-around;
     align-items: flex-start;
     padding: 20px;
 }
@@ -201,6 +206,7 @@ body {
     height: 220px;
     width: auto;
     padding: 10px;
+    margin: 0px 20px;
     border-radius: 8px; 
     cursor: pointer;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.06);    
@@ -213,10 +219,6 @@ body {
     margin-right: 10px;
     border-radius: 10px;
     object-fit: contain; 
-    transition: transform 0.4s ease-in-out;
-}
-.project img:hover {
-    transform: scale(1.1);
 }
 
 .goodfat { 
@@ -229,7 +231,7 @@ body {
 }
 
 .hover {
-    transition: transform 0.4s ease-in-out !important;
+    transition: transform 0.4s ease !important;
 }
 
 .hover:hover {
@@ -268,7 +270,7 @@ body {
     width: 90%;
     border-radius: 8px;
     padding: 40px 20px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease;
 }
 
 .modal-title {
@@ -304,20 +306,42 @@ body {
 .modal-contents {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     line-height: 3;
     font-size: 16px;
     padding: 0px 25px
 }
-
-.modal-button {
-    color: inherit;
-    border-color: inherit;
+.modal-contents p {
+    margin: 8px 10px; 
 }
 
+.modal-button-wrapper {
+    display: flex; 
+    justify-content: center;
+}
+
+.modal-button { 
+    padding: 5px 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.6s ease;
+}
+
+.modal-button.goodfat {
+    color: var(--goodfat-text-colour);
+    border: 2px solid var(--goodfat-text-colour);
+}
+
+.modal-button.goodfat:hover { 
+    background-color: #2f2441;
+    color: var(--goodfat-bgcolour);
+    border: var(--goodfat-bgcolour);
+    box-shadow: 1px 1px 1px rgba(230, 230, 230, 0.5);
+}
+
+
 .goodfat-modal-properties {
-    background-color: "#f6e6ff";
-    color: #513063;
+    background-color: var(--goodfat-bgcolour);
+    color: var(--goodfat-text-colour);
 }
 
 
@@ -361,10 +385,58 @@ body {
     animation: slide-out 3s forwards;
 }
 
-@media only screen and (max-width: 480px) and (orientation: portrait) {
+
+/* Styling for mobile */
+@media only screen and (max-width: 600px) and (orientation: portrait) {
     .written-effect { 
         white-space: normal;
         max-width: 100%;
         overflow: hidden; 
+    }
+
+    .modal-container {
+        padding: 20px 10px;
+        max-width: 90%;
+        border-radius: 12px;
+    }
+    
+    .modal-title img {
+        width: 70%;
+    }
+    
+    .modal-contents {
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+    
+    .modal-button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    .collection { 
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .project { 
+        width: 100%;
+        margin: 10px 0px;
+    }
+
+    .header {
+        text-align: center;
     }
 }
