@@ -89,6 +89,12 @@ async function switchElements(sectionId) {
     }
 
     await delayedAnimationEffect(elementsToAnimate.filter(e => e !== h1Element), 'zoom-in', 150);
+
+    const hoverElements = document.querySelectorAll('.hover');
+    hoverElements.forEach(element => {
+        element.style.opacity = '1';
+        element.classList.remove('zoom-in');
+    });
 }
 
 
