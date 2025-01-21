@@ -97,23 +97,6 @@ async function switchElements(sectionId) {
     });
 }
 
-
-function handleModal(modalId, visible) {
-    const modal = document.getElementById(modalId);
-    const modalContent = modal.querySelector('.modal-container');
-    modalContent.style.animation = '';
-
-    if (visible) {
-        modalContent.style.animation = 'zoom-in 1s forwards';
-        modal.style.visibility = 'visible';
-    } else { 
-        modalContent.style.animation = 'zoom-out 1s forwards';
-        setTimeout(() => { 
-            modal.style.visibility = 'hidden';
-        }, 900)
-    }
-}
-
 window.addEventListener('load', () => {
     switchElements('home');
 })
