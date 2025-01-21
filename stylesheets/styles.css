@@ -21,6 +21,7 @@
 
     --goodfat-text-colour: #513063;
     --goodfat-bgcolour: #f6e6ff;
+    --nimble-text-colour: #a04251;
 }
 
 *{
@@ -97,10 +98,6 @@ body {
 .header {
     font-family: var(--title-font);
     font-size: 6rem;
-    text-align: left;
-}
-
-.large-screen {
     text-align: left;
 }
 
@@ -251,15 +248,14 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.159);
-    z-index: -1;
+    z-index: -5;
 }
 
 .modal-container {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
     height: auto;
-    max-width: 800px;
+    max-width: 700px;
     width: 90%;
     border-radius: 8px;
     padding: 40px 20px;
@@ -296,27 +292,47 @@ body {
     background-color: #FFB377;
 }
 
-.modal-contents {
+.modal-content-container {
     display: flex;
+    justify-content: center;
     align-items: center;
-    line-height: 3;
+    gap: 2rem;
+
     font-size: 16px;
-    padding: 0px 25px
-}
-.modal-contents p {
-    margin: 8px 10px; 
+    padding: 20px;
+    text-align: center;
 }
 
-.modal-button-wrapper {
-    display: flex; 
+.modal-contents { 
+    text-align: left;
+    line-height: 1.8;
+}
+
+.modal-contents p { 
+    margin-bottom: 5px;
+}
+
+.modal-contents ul {
+    margin-left: 40px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.modal-button-container {
+    display: flex;
     justify-content: center;
+    gap: 1rem;
+    padding: 20px;
+    flex-wrap: wrap;
 }
 
 .modal-button { 
-    padding: 5px 20px;
+    padding: 10px 20px;
     border-radius: 8px;
     text-align: center;
-    transition: all 0.6s ease;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
 }
 
 .modal-button.goodfat {
@@ -327,16 +343,30 @@ body {
 .modal-button.goodfat:hover { 
     background-color: #2f2441;
     color: var(--goodfat-bgcolour);
-    border: var(--goodfat-bgcolour);
+    border: 2px solid var(--goodfat-bgcolour);
     box-shadow: 1px 1px 1px rgba(230, 230, 230, 0.5);
 }
-
 
 .goodfat-modal-properties {
     background-color: var(--goodfat-bgcolour);
     color: var(--goodfat-text-colour);
 }
 
+.nimble-modal-properties {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.modal-button.nimble {
+    color: var(--nimble-text-colour);
+    border: 2px solid var(--nimble-text-colour);
+}
+.modal-button.nimble:hover {
+    background-color: var(--nimble-text-colour);
+    border: 2px solid var(--nimble-text-colour);
+    color: #ffffff;
+    box-shadow: 1px 1px 1px rgba(230, 230, 230, 0.5);
+}
 
 /* Animations */ 
 @keyframes write {
