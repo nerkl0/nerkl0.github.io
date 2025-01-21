@@ -43,13 +43,13 @@
                 <!-- Home Section -->
                 <section id="home">
                     <header class="header-container">
-                        <div class="large-screen">
+                        <div>
                             <h1 id="name" class="header">Nicole Birch</h1>
                         </div>
                         <h5>Software Developer</h5>
                     </header>
                     <nav class="nav-buttons">
-                        <button data-content="portfolio">Portfolio</button>
+                        <button class="hover nav-button" data-content="portfolio">Portfolio</button>
                     </nav>
 
                     <footer class="footer">
@@ -80,16 +80,16 @@
                 <!-- Portfolio Section -->
                 <section id="portfolio">
                     <nav class="nav-buttons portfolio-nav">
-                        <button data-content="home">Home</button>
+                        <button class="nav-button hover" data-content="home">Home</button>
                     </nav>
                     <div class="collection">
                         <!-- Goodfat Project -->
-                        <div class="project goodfat hover" onclick='handleModal("goodfat-modal", true)'>
+                        <div class="project goodfat hover" onclick="populateModal('goodfat')">
                             <img 
                                 src="./assets/images/baker_0.webp" alt="Good Fat Pastry Logo">
                         </div>
                         <!-- Nimble Merchant Project -->
-                        <div class="project nimble hover">
+                        <div class="project nimble hover" onclick="populateModal('nimble')">
                             <img
                                 src="./assets/images/NimbleMerchant.webp" alt="Nimble Merchant Logo">
                         </div>
@@ -98,64 +98,16 @@
             </main>
         </div>
 
-        <!-- Good Fat Modal -->
-        <div id="goodfat-modal" class="modal-wrapper">
-            <div class="modal-background" onclick='handleModal("goodfat-modal", false)'></div>
-            <div class="modal-container goodfat-modal-properties">
-                <div class="modal-title">
-                    <img 
-                        src="./assets/images/GoodFatLogo.png" alt="Good Fat Pastry Logo">
-                    <button class="close-btn" onclick='handleModal("goodfat-modal", false)'>&#10006;</button>
-                </div>
-                <div class="modal-contents">
-                    <div>
-                        <img 
-                            src="./assets/images/baker_0.webp" alt="Good Fat Pastry icon">
-                    </div>
-                    <div>
-                        <div class="modal-button-wrapper">
-                            <a class="modal-button goodfat" 
-                                href="https://goodfatpastry.au" target="_blank" rel="noopener noreferrer">
-                                Follow to Website
-                            </a>
-                        </div>
-                        <p>Business website built for local Blue Mountains Bakery</p>
-                        <strong>
-                            <p>React &#8226; JavaScript &#8226; TypeScript &#8226; Wrangler</p>
-                        </strong>
-                    </div>
-                </div>
+
+        <!-- Modal Container -->
+        <div id="modal" class="modal-wrapper">
+            <div class="modal-background" onclick='handleModal("modal", false)'></div>
+            <div class="modal-container" id="modal-container">
             </div>
         </div>
 
-        <!-- Nimble Modal -->
-        <div id="nimble-modal" class="modal-wrapper">
-            <div class="modal-background" onclick='handleModal("nimble-modal", false)'></div>
-            <div class="modal-container nimble-modal-properties">
-                <div class="modal-title">
-                    <img src="./assets/images/NimbleMerchant.webp" alt="Nimble Merchant Logo" />
-                    <button class="close-btn" onclick='handleModal("nimble-modal", false)'>&#10006;</button>
-                </div>
-                <div class="modal-contents">
-                    <div>
-                        <img src="" alt="" />
-                    </div>
-                    <div>
-                        <p>About about</p>
-                        <strong>
-                            <p>Languages</p>
-                        </strong>
-                        <button class="button modal-button">
-                            <a href="https://github.com/orgs/Gelos-Bean/repositories" target="_blank" rel="noopener noreferrer">
-                                GitHub Repo
-                            </a>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <script defer src="./script.js"></script>
+        <script defer src="script.js"></script>
+        <script defer src="modals.js"></script>
     </body>
 </html>
 

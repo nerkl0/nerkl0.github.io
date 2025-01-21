@@ -89,23 +89,12 @@ async function switchElements(sectionId) {
     }
 
     await delayedAnimationEffect(elementsToAnimate.filter(e => e !== h1Element), 'zoom-in', 150);
-}
 
-
-function handleModal(modalId, visible) {
-    const modal = document.getElementById(modalId);
-    const modalContent = modal.querySelector('.modal-container');
-    modalContent.style.animation = '';
-
-    if (visible) {
-        modalContent.style.animation = 'zoom-in 1s forwards';
-        modal.style.visibility = 'visible';
-    } else { 
-        modalContent.style.animation = 'zoom-out 1s forwards';
-        setTimeout(() => { 
-            modal.style.visibility = 'hidden';
-        }, 900)
-    }
+    const hoverElements = document.querySelectorAll('.hover');
+    hoverElements.forEach(element => {
+        element.style.opacity = '1';
+        element.classList.remove('zoom-in');
+    });
 }
 
 window.addEventListener('load', () => {
