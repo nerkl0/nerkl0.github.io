@@ -55,6 +55,38 @@ const modalsData = {
             },
         ],
     },
+    beanscene: {
+        title: 'beanscene',
+        logo: "./assets/images/beanscene.webp",
+        description: "A reservations system that includes a front-end customer facing booking system, a front-end employee booking management system & a backend database. The employee view utilises Identity and JSON Web Tokens to modulate access",
+        features: [
+            "Customer & Employee end-user functionality",
+            "Booking management",
+            "Modular access roles",
+            "Secure Login",
+        ],
+        yearBuilt: "2024",
+        technologies: [
+            "ASP.NET", 
+            "C#", 
+            "MVC / Entity Framework", 
+            "Identity Framework", 
+            "SQL Server", 
+            "Bootstrap", 
+            "JSON Web Tokens"
+        ],
+        modalClass: "beanscene-modal-properties",
+        buttons: [
+            {
+                title: "Demo",
+                link: "https://drive.google.com/file/d/1E9mzAUSznsqiPlYFpY-ZxH_6pKHDNWRX/view?usp=drive_link",
+            },
+            {
+                title: "Github Repository",
+                link: "https://github.com/bean-reservations/website",
+            },
+        ],
+    },
 };
 
 function populateModal(modalKey) {
