@@ -79,16 +79,16 @@ async function switchElements(sectionId) {
         element.style.opacity = '0';
     });
 
-    const h1Element = sectionNode.querySelector('h1');
-    if (h1Element) {
-        h1Element.classList.add('written-effect');
-        h1Element.addEventListener('animationend', () => {
-            h1Element.style.opacity= '1';
-            h1Element.classList.remove('written-effect');
+    const header = sectionNode.querySelector('h1') || sectionNode.querySelector('h3');
+    if (header) {
+        header.classList.add('written-effect');
+        header.addEventListener('animationend', () => {
+            header.style.opacity= '1';
+            header.classList.remove('written-effect');
         });
     }
 
-    await delayedAnimationEffect(elementsToAnimate.filter(e => e !== h1Element), 'zoom-in', 150);
+    await delayedAnimationEffect(elementsToAnimate.filter(e => e !== header), 'zoom-in', 150);
 
     const hoverElements = document.querySelectorAll('.hover');
     hoverElements.forEach(element => {
