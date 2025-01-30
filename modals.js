@@ -31,7 +31,7 @@ const modalsData = {
             "Modular Employee Access Levels",
             "For more features, click on Frontend Link"
         ],
-        yearBuilt: "2024",
+        yearBuilt: "2024 with project partner, Ben Kindon",
         technologies: [
             "React-Native",
             "JavaScript",
@@ -65,7 +65,7 @@ const modalsData = {
             "Modular access roles",
             "Secure Login",
         ],
-        yearBuilt: "2024",
+        yearBuilt: "2024 with project partner, Ben Kindon",
         technologies: [
             "ASP.NET", 
             "C#", 
