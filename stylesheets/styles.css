@@ -498,3 +498,16 @@ body {
         text-align: center;
     }
 }
+
+
+@media (max-width: 768px) {
+    .modal-icon {
+        display: none;
+    }
+    .modal-button-container { 
+        padding-top: 0px;
+    }
+    .modal-title img { 
+        padding-top: 10px;
+    }
+}
