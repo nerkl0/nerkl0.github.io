@@ -485,16 +485,29 @@ body {
         padding: 10px;
         margin-left: 0px;
     }
-    .projects {
-        flex-direction: column;
-    }
-
-    .project { 
-        width: 100%;
-        margin: 10px 0px;
-    }
 
     .header {
         text-align: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .modal-icon {
+        display: none;
+    }
+    .modal-button-container { 
+        padding-top: 0px;
+    }
+    .modal-title img { 
+        padding-top: 10px;
+    }
+    .projects {
+        flex-direction: column;
+        align-items: center;
+    }
+    .project { 
+        width: 100%;
+        margin: 10px 0px;
     }
 }
