@@ -116,7 +116,7 @@ function populateModal(modalKey) {
         </div>
         <div class="modal-content-container">
             ${modalData.icon ? `
-                <div class="modal-icon">
+                <div class="modal-icon" >
                     <img src="${modalData.icon}" alt="${modalKey} icon">
                 </div>` : ""}
             <div>
